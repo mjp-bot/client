@@ -1,0 +1,265 @@
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Alumni Sans", sans-serif;
+}
+
+/* MAIN CONTAINER */
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* LEFT SIDE */
+.login-left {
+  width: 50%;
+  min-width: 350px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 60px 80px;
+  position: relative;
+}
+
+/* LEFT CONTENT (offset from top) */
+.left-content {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* TOP SECTION (Logo) */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.top .logo {
+  width: 250px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* BOTTOM SECTION */
+.bottom {
+  max-width: 500px;
+  width: 100%;
+  margin-left: 80px; /* Desktop offset */
+  transition: all 0.1s ease;
+}
+
+/* TITLE & SUBTITLE */
+.webTitle h2 {
+  color: #185204;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.webTitle p {
+  color: #3B3B3B;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+/* FORM */
+form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #3B3B3B;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #185204;
+  border-radius: 3px;
+  outline: none;
+  margin-bottom: 18px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+input:focus {
+  /* border-color: #1f611f; */
+  border: 2px solid #1f611f;
+}
+
+button {
+  background-color: #185204;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #1f611f;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* RIGHT SIDE */
+.login-right {
+  width: 50%;
+  min-width: 350px;
+  background: #185204;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: url("C:\\Projects\\DeviceLifecyle\\client\\public\\assets\\brand\\greentechbg.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+}
+
+/* ========================== */
+/* RESPONSIVE DESIGN          */
+/* ========================== */
+
+/* Large tablets */
+@media (max-width: 1024px) {
+  .login-left {
+    padding: 40px 60px;
+  }
+
+  .left-content {
+    margin-top: 80px;
+    max-width: 500px;
+  }
+
+  .bottom {
+    margin-left: 40px; /* smaller offset */
+  }
+
+  .webTitle h2 {
+    font-size: 40px;
+  }
+
+  .webTitle p {
+    font-size: 18px;
+  }
+}
+
+/* Tablets & smaller laptops */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+    height: auto;
+  }
+
+  .login-right {
+    height: 250px;
+  }
+
+  .bg-pattern {
+    opacity: 0.7;
+  }
+
+  .login-left {
+    padding: 40px 30px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .left-content {
+    margin-top: 40px;
+    align-items: center;
+  }
+
+  .bottom {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 400px;
+  }
+
+  .webTitle h2 {
+    font-size: 36px;
+  }
+
+  .webTitle p,
+  label,
+  input,
+  button {
+    font-size: 16px;
+  }
+
+  form {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .left-content {
+    margin-top: 30px;
+    max-width: 90%;
+    gap: 40px;
+  }
+
+  .bottom {
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  .webTitle h2 {
+    font-size: 30px;
+  }
+
+  .webTitle p {
+    font-size: 15px;
+  }
+
+  input,
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .login-right {
+    height: 200px;
+  }
+}
