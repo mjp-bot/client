@@ -1,35 +1,70 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const res = await axios.post("http://localhost:3001/api/auth/login", {
+  //       username,
+  //       password,
+  //     });
+
+  //     console.log("Login response:", res.data);
+
+  //     if (res.data.success) {
+  //       localStorage.setItem("token", res.data.token || "");
+  //       localStorage.setItem("role", res.data.user.user_type_id);
+
+  //       console.log("Navigating to dashboard...");
+  //       // window.location.href = "/Dashboard";
+
+  //       navigate("/Dashboard", { replace: true });
+  //     } else {
+  //       setError("Invalid credentials");
+  //     }
+  //   } catch (err) {
+  //     console.error("Login error:", err);
+  //     setError(err.response?.data?.message || "Login failed");
+  //   }
+  // };
+
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       const res = await axios.post("http://localhost:3001/api/auth/login", {
         username,
         password,
       });
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.user.account_type_id);
 
-      if (res.data.user.account_type_id === 1) {
-        window.location.href = "/dashboard";
+      console.log("Login response:", res.data);
+
+      if (res.data.success) {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("role", res.data.user.user_type_id);
+        localStorage.setItem("username", res.data.user.username);
+
+        navigate("/dashboard", { replace: true });
       } else {
-        window.location.href = "/user-dashboard";
+        setError("Invalid credentials");
       }
     } catch (err) {
+      console.error("Login error:", err);
       setError(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
     <div className="login-container">
-      {/* LEFT SIDE */}
       <div className="login-left">
         <div className="left-content">
           <div className="top">
@@ -74,7 +109,6 @@ const Login = () => {
         </div>
       </div>
 
-      {/* RIGHT SIDE */}
       <div className="login-right">
         <div className="bg-pattern"></div>
       </div>

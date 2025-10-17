@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Ensure this font is linked in your HTML */
   font-family: "Alumni Sans", sans-serif;
 }
 
@@ -15,13 +16,13 @@
 
 /* LEFT SIDE */
 .login-left {
+  /* Removed min-width to prevent horizontal scroll on small devices */
   width: 50%;
-  min-width: 350px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center; /* Changed to center for better content control */
   padding: 60px 80px;
   position: relative;
 }
@@ -30,14 +31,18 @@
 .left-content {
   margin-top: 50px;
   width: 100%;
-  max-width: 600px;
+  /* Set a reasonable maximum width for desktop */
+  max-width: 600px; 
   display: flex;
   flex-direction: column;
   gap: 80px;
+  /* Centering the content within the left panel */
+  align-items: center; 
 }
 
 /* TOP SECTION (Logo) */
 .top {
+  width: 100%; /* Take full width of left-content */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -53,11 +58,18 @@
 .bottom {
   max-width: 500px;
   width: 100%;
-  margin-left: 80px; /* Desktop offset */
+  /* Remove desktop offset; center the content instead */
+  margin-left: 0; 
   transition: all 0.1s ease;
+  text-align: left; /* Ensure text is left-aligned by default */
 }
 
 /* TITLE & SUBTITLE */
+.webTitle {
+  width: 100%;
+  max-width: 500px; /* Constrain the text block width */
+}
+
 .webTitle h2 {
   color: #185204;
   font-size: 48px;
@@ -98,7 +110,6 @@ input {
 }
 
 input:focus {
-  /* border-color: #1f611f; */
   border: 2px solid #1f611f;
 }
 
@@ -121,17 +132,16 @@ button:hover {
 
 .error {
   color: red;
-  font-size: 13px;
+  font-size: 20px;
   margin-top: -10px;
   margin-bottom: 10px;
-  font-size: 20px;
   font-weight: 500;
 }
 
 /* RIGHT SIDE */
 .login-right {
+  /* Removed min-width, use flex-grow for space filling */
   width: 50%;
-  min-width: 350px;
   background: #185204;
   display: flex;
   align-items: center;
@@ -143,7 +153,8 @@ button:hover {
 .bg-pattern {
   position: absolute;
   inset: 0;
-  background-image: url("C:\\Projects\\DeviceLifecyle\\client\\public\\assets\\brand\\greentechbg.jpg");
+  /* NOTE: Local file paths like 'C:\...' won't work in production */
+  background-image: url("C:\\Projects\\DeviceLifecyle\\client\\public\\assets\\brand\\greentechbg.jpg"); 
   background-size: cover;
   background-position: center;
   opacity: 0.9;
@@ -153,7 +164,7 @@ button:hover {
 /* RESPONSIVE DESIGN          */
 /* ========================== */
 
-/* Large tablets */
+/* Large tablets (1024px and down) */
 @media (max-width: 1024px) {
   .login-left {
     padding: 40px 60px;
@@ -162,10 +173,6 @@ button:hover {
   .left-content {
     margin-top: 80px;
     max-width: 500px;
-  }
-
-  .bottom {
-    margin-left: 40px; /* smaller offset */
   }
 
   .webTitle h2 {
@@ -177,16 +184,26 @@ button:hover {
   }
 }
 
-/* Tablets & smaller laptops */
+/* --- */
+
+/* Tablets & smaller laptops (768px and down) */
 @media (max-width: 768px) {
   .login-container {
+    /* Stack the left and right panels vertically */
     flex-direction: column;
+    height: auto; /* Allow height to be determined by content */
   }
 
   .login-left,
   .login-right {
     width: 100%;
-    height: auto;
+    /* Added min-height to login-left to ensure it has space even if content is sparse */
+    min-height: 70vh; 
+  }
+  
+  .login-left {
+    padding: 40px 20px; /* Reduced horizontal padding for small screens */
+    align-items: center;
   }
 
   .login-right {
@@ -197,21 +214,26 @@ button:hover {
     opacity: 0.7;
   }
 
-  .login-left {
-    padding: 40px 30px;
-    align-items: center;
-    text-align: center;
-  }
-
   .left-content {
     margin-top: 40px;
-    align-items: center;
+    gap: 40px; /* Reduced gap for smaller screens */
+    /* Ensure content aligns well, inheriting center alignment from login-left */
+    align-items: center; 
+  }
+
+  .top {
+    justify-content: center; /* Center the logo on tablets/mobile */
   }
 
   .bottom {
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 400px;
+    /* Use margin: 0 auto for horizontal centering */
+    margin: 0 auto; 
+    max-width: 90%; /* Use percentage for flexibility */
+    text-align: center; /* Center title/subtitle text */
+  }
+
+  .webTitle {
+    text-align: center; /* Ensure titles are centered */
   }
 
   .webTitle h2 {
@@ -221,45 +243,61 @@ button:hover {
   .webTitle p,
   label,
   input,
-  button {
+  button,
+  .error {
     font-size: 16px;
   }
 
   form {
     max-width: 400px;
-    width: 100%;
     margin: 0 auto;
+    text-align: left; /* Keep form labels/inputs aligned left within the form */
   }
 }
 
-/* Mobile */
+/* --- */
+
+/* Mobile (480px and down) */
 @media (max-width: 480px) {
+  .login-left {
+    padding: 30px 15px; /* Further reduced padding */
+    min-height: 60vh;
+  }
+
   .left-content {
-    margin-top: 30px;
-    max-width: 90%;
-    gap: 40px;
+    margin-top: 20px;
+    gap: 30px;
+    max-width: 100%; /* Allow content to use full width (minus padding) */
+  }
+
+  .top .logo {
+    width: 200px; /* Slightly smaller logo */
   }
 
   .bottom {
-    margin: 0 auto;
-    max-width: 90%;
+    max-width: 95%; /* Increased flexibility */
   }
 
   .webTitle h2 {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .webTitle p {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   input,
-  button {
+  button,
+  .error {
     font-size: 14px;
     padding: 10px;
   }
 
   .login-right {
-    height: 200px;
+    height: 180px;
+  }
+
+  form {
+    max-width: 100%; /* Form takes up most of the screen width */
   }
 }

@@ -1,0 +1,40 @@
+.sidepanel {
+  width: 240px;
+  height: 100vh;
+  background-color: #0d1b2a;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.sidepanel-title {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sidepanel-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidepanel-menu li {
+  margin-bottom: 1rem;
+}
+
+.sidepanel-menu li a {
+  text-decoration: none;
+  color: #e0e0e0;
+  transition: color 0.3s;
+}
+
+.sidepanel-menu li a:hover {
+  color: #00b4d8;
+}
+
+.active a {
+  font-weight: bold;
+  color: #00b4d8;
+}
