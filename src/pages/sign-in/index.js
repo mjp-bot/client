@@ -9,34 +9,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const res = await axios.post("http://localhost:3001/api/auth/login", {
-  //       username,
-  //       password,
-  //     });
-
-  //     console.log("Login response:", res.data);
-
-  //     if (res.data.success) {
-  //       localStorage.setItem("token", res.data.token || "");
-  //       localStorage.setItem("role", res.data.user.user_type_id);
-
-  //       console.log("Navigating to dashboard...");
-  //       // window.location.href = "/Dashboard";
-
-  //       navigate("/Dashboard", { replace: true });
-  //     } else {
-  //       setError("Invalid credentials");
-  //     }
-  //   } catch (err) {
-  //     console.error("Login error:", err);
-  //     setError(err.response?.data?.message || "Login failed");
-  //   }
-  // };
-
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -52,6 +24,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("role", res.data.user.user_type_id);
         localStorage.setItem("username", res.data.user.username);
+        localStorage.setItem("user_name", res.data.user.user_name);
 
         navigate("/dashboard", { replace: true });
       } else {
@@ -110,7 +83,13 @@ const Login = () => {
       </div>
 
       <div className="login-right">
-        <div className="bg-pattern"></div>
+        <div className="bg-pattern">
+          <img
+            src="/assets/brand/greentechbg.jpg"
+            alt="Delsan Logo"
+            className="logo"
+          />
+        </div>
       </div>
     </div>
   );

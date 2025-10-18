@@ -3,83 +3,86 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* Ensure this font is linked in your HTML */
   font-family: "Alumni Sans", sans-serif;
+}
+
+/* PREVENT SCROLLING & ENSURE FULL HEIGHT FIT */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
 }
 
 /* MAIN CONTAINER */
 .login-container {
   display: flex;
-  height: 100vh;
+  height: 100dvh; /* dynamic viewport height (fix for laptop scroll) */
   width: 100%;
+  overflow: hidden;
 }
 
 /* LEFT SIDE */
 .login-left {
-  /* Removed min-width to prevent horizontal scroll on small devices */
   width: 50%;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center; /* Changed to center for better content control */
-  padding: 60px 80px;
+  justify-content: center; /* Center vertically */
+  align-items: center;
+  padding: 60px 60px;
   position: relative;
+  height: 100%;
 }
 
-/* LEFT CONTENT (offset from top) */
 .left-content {
-  margin-top: 50px;
   width: 100%;
-  /* Set a reasonable maximum width for desktop */
-  max-width: 600px; 
+  max-width: 580px;
   display: flex;
   flex-direction: column;
-  gap: 80px;
-  /* Centering the content within the left panel */
-  align-items: center; 
+  align-items: center;
+  justify-content: center; /* Vertically center the form content */
+  gap: 60px;
+  height: 100%;
 }
 
 /* TOP SECTION (Logo) */
 .top {
-  width: 100%; /* Take full width of left-content */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
 .top .logo {
-  width: 250px;
-  max-width: 100%;
+  width: 220px;
   height: auto;
 }
 
 /* BOTTOM SECTION */
 .bottom {
-  max-width: 500px;
   width: 100%;
-  /* Remove desktop offset; center the content instead */
-  margin-left: 0; 
+  max-width: 480px;
+  margin-left: 0;
   transition: all 0.1s ease;
-  text-align: left; /* Ensure text is left-aligned by default */
+  text-align: left;
 }
 
 /* TITLE & SUBTITLE */
 .webTitle {
   width: 100%;
-  max-width: 500px; /* Constrain the text block width */
+  max-width: 480px;
 }
 
 .webTitle h2 {
   color: #185204;
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 600;
   line-height: 1.1;
 }
 
 .webTitle p {
-  color: #3B3B3B;
-  font-size: 22px;
+  color: #3b3b3b;
+  font-size: 20px;
   font-weight: 400;
   margin-bottom: 25px;
 }
@@ -87,15 +90,15 @@
 /* FORM */
 form {
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
 }
 
 label {
-  color: #3B3B3B;
+  color: #3b3b3b;
   margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -106,7 +109,7 @@ input {
   outline: none;
   margin-bottom: 18px;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 input:focus {
@@ -120,7 +123,7 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   margin-top: 20px;
   transition: background 0.3s ease;
@@ -132,15 +135,14 @@ button:hover {
 
 .error {
   color: red;
-  font-size: 20px;
-  margin-top: -10px;
+  font-size: 16px;
+  margin-top: -8px;
   margin-bottom: 10px;
   font-weight: 500;
 }
 
 /* RIGHT SIDE */
 .login-right {
-  /* Removed min-width, use flex-grow for space filling */
   width: 50%;
   background: #185204;
   display: flex;
@@ -148,13 +150,12 @@ button:hover {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 .bg-pattern {
   position: absolute;
   inset: 0;
-  /* NOTE: Local file paths like 'C:\...' won't work in production */
-  background-image: url("C:\\Projects\\DeviceLifecyle\\client\\public\\assets\\brand\\greentechbg.jpg"); 
   background-size: cover;
   background-position: center;
   opacity: 0.9;
@@ -164,46 +165,54 @@ button:hover {
 /* RESPONSIVE DESIGN          */
 /* ========================== */
 
-/* Large tablets (1024px and down) */
-@media (max-width: 1024px) {
+/* LAPTOP (≤1400px) */
+@media (max-width: 1400px) {
   .login-left {
-    padding: 40px 60px;
+    width: 55%;
+    padding: 40px 50px;
   }
 
-  .left-content {
-    margin-top: 80px;
-    max-width: 500px;
+  .login-right {
+    width: 45%;
   }
 
   .webTitle h2 {
-    font-size: 40px;
+    font-size: 38px;
   }
 
   .webTitle p {
     font-size: 18px;
   }
+
+  input,
+  button,
+  label {
+    font-size: 17px;
+  }
 }
 
-/* --- */
+/* TABLETS & SMALL LAPTOPS (≤800px) */
+@media (max-width: 800px) {
+  html,
+  body {
+    overflow: auto; /* allow scroll on small screens */
+  }
 
-/* Tablets & smaller laptops (768px and down) */
-@media (max-width: 768px) {
   .login-container {
-    /* Stack the left and right panels vertically */
     flex-direction: column;
-    height: auto; /* Allow height to be determined by content */
+    height: auto;
   }
 
   .login-left,
   .login-right {
     width: 100%;
-    /* Added min-height to login-left to ensure it has space even if content is sparse */
-    min-height: 70vh; 
+    min-height: 70vh;
   }
-  
+
   .login-left {
-    padding: 40px 20px; /* Reduced horizontal padding for small screens */
+    padding: 40px 25px;
     align-items: center;
+    justify-content: flex-start;
   }
 
   .login-right {
@@ -216,28 +225,27 @@ button:hover {
 
   .left-content {
     margin-top: 40px;
-    gap: 40px; /* Reduced gap for smaller screens */
-    /* Ensure content aligns well, inheriting center alignment from login-left */
-    align-items: center; 
+    gap: 40px;
+    align-items: center;
+    height: auto;
   }
 
   .top {
-    justify-content: center; /* Center the logo on tablets/mobile */
+    justify-content: center;
   }
 
   .bottom {
-    /* Use margin: 0 auto for horizontal centering */
-    margin: 0 auto; 
-    max-width: 90%; /* Use percentage for flexibility */
-    text-align: center; /* Center title/subtitle text */
+    margin: 0 auto;
+    max-width: 90%;
+    text-align: center;
   }
 
   .webTitle {
-    text-align: center; /* Ensure titles are centered */
+    text-align: center;
   }
 
   .webTitle h2 {
-    font-size: 36px;
+    font-size: 34px;
   }
 
   .webTitle p,
@@ -251,35 +259,33 @@ button:hover {
   form {
     max-width: 400px;
     margin: 0 auto;
-    text-align: left; /* Keep form labels/inputs aligned left within the form */
+    text-align: left;
   }
 }
 
-/* --- */
-
-/* Mobile (480px and down) */
+/* MOBILE (≤480px) */
 @media (max-width: 480px) {
   .login-left {
-    padding: 30px 15px; /* Further reduced padding */
+    padding: 25px 15px;
     min-height: 60vh;
   }
 
   .left-content {
     margin-top: 20px;
-    gap: 30px;
-    max-width: 100%; /* Allow content to use full width (minus padding) */
+    gap: 25px;
+    max-width: 100%;
   }
 
   .top .logo {
-    width: 200px; /* Slightly smaller logo */
+    width: 180px;
   }
 
   .bottom {
-    max-width: 95%; /* Increased flexibility */
+    max-width: 95%;
   }
 
   .webTitle h2 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .webTitle p {
@@ -290,7 +296,7 @@ button:hover {
   button,
   .error {
     font-size: 14px;
-    padding: 10px;
+    padding: 8px;
   }
 
   .login-right {
@@ -298,6 +304,6 @@ button:hover {
   }
 
   form {
-    max-width: 100%; /* Form takes up most of the screen width */
+    max-width: 100%;
   }
 }

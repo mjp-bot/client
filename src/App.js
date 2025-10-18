@@ -8,39 +8,24 @@ import {
 } from "react-router-dom";
 import Login from "./pages/sign-in/index";
 import Dashboard from "./pages/dashboard/index";
+import Settings from "./pages/settings/index";
+import ShowSidebar from "./pages/sign-in/ShowSidebar";
 import SidePanel from "./pages/navigation/index";
-// import Computers, Settings, Accounts, Audit once ready
+import ProtectedRoute from "./pages/sign-in/ProctedRoute";
 
-// const ProtectedRoute = ({ children, allowedRoles }) => {
+// const ProtectedRoute = ({ children }) => {
 //   const token = localStorage.getItem("token");
-//   const role = parseInt(localStorage.getItem("role"), 10);
-
 //   if (!token) return <Navigate to="/" />;
-//   if (allowedRoles && !allowedRoles.includes(role))
-//     return <Navigate to="/unauthorized" />;
-
 //   return children;
 // };
 
-const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
-  if (!token) return <Navigate to="/" />;
-  return children;
-};
-
-// Layout wrapper that includes sidebar
-const Layout = ({ children }) => (
-  <div style={{ display: "flex" }}>
-    <SidePanel />
-    <div style={{ marginLeft: "240px", width: "100%", padding: "20px" }}>
-      {children}
-    </div>
-  </div>
-);
-
 function App() {
   return (
+    // <AuthProvider>
     <Router>
+      <ShowSidebar>
+        <SidePanel />
+      </ShowSidebar>
       <Routes>
         <Route path="/" element={<Login />} />
 
@@ -49,6 +34,14 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={[1, 2]}>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute allowedRoles={[1, 2]}>
+              <Settings />
             </ProtectedRoute>
           }
         />
@@ -62,6 +55,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+       
         <Route
           path="/accounts"
           element={
@@ -82,6 +77,7 @@ function App() {
         <Route path="/unauthorized" element={<h2>Unauthorized Access</h2>} />
       </Routes>
     </Router>
+    // </AuthProvider>
   );
 }
 
