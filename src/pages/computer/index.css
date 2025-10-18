@@ -1,0 +1,13 @@
+.computers {
+  position: fixed; /* Make it stick to a specific position */
+  bottom: 0; /* Attach it to the bottom */
+  left: 200px; /* Align it with your sidebar */
+  right: 0; /* Stretch it across the rest of the screen */
+  background-color: #f2f2f2;
+  height: 93vh;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  overflow-x: auto;
+}

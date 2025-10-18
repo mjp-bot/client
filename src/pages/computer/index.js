@@ -1,7 +1,7 @@
 import React from "react";
-import "./dashboard.css";
+import "./index.css";
 
-function index() {
+function Index() {
   const role = Number(localStorage.getItem("role"));
 
   return (
@@ -11,8 +11,8 @@ function index() {
     //   {role === 2 && <h2>Welcome, User!</h2>} */}
     // </div>
 
-    <div className="dashboard">Dashboard</div>
+    <div className="computers">Computers</div>
   );
 }
 
-export default index;
+export default Index;
