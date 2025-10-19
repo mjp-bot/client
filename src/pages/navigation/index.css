@@ -35,6 +35,7 @@
   justify-content: flex-start;
   transition: all 0.3s ease;
   overflow-y: auto;
+  border-right: 1px solid #e0e0e0;
 }
 
 .sidepanel-title {
@@ -42,6 +43,7 @@
   margin-bottom: 2rem;
   text-align: center;
   color: #185204;
+  font-weight: 600;
 }
 
 .sidepanel-menu {
@@ -58,12 +60,16 @@
   text-decoration: none;
   color: #185204;
   transition: color 0.3s;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   white-space: nowrap;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
 }
 
 .sidepanel-menu li a:hover {
   color: #00b4d8;
+  background-color: #f2f2f2;
 }
 
 .active a {
@@ -91,10 +97,8 @@
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: #1b263b;
-  border: 1px solid #33415c;
+  background-color: #ffffff;
   border-radius: 6px;
-  padding: 10px;
   min-width: 160px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -102,26 +106,31 @@
 }
 
 .account-username {
-  color: #e0e0e0;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
+  color: #185204;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 12px 0;
 }
 
 .logout-btn {
-  background-color: #00b4d8;
-  border: none;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 4px;
+  background-color: #fff;
+  border-top: 1px solid gray;
+  color: #185204;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 .logout-btn:hover {
-  background-color: #0096c7;
+  background-color: #185204;
+  color: #ffffff;
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
+
+/* ✅ Tablet view (medium screens) */
 @media (max-width: 1024px) {
   .topbar {
     padding: 8px 16px;
@@ -137,6 +146,7 @@
   }
 }
 
+/* ✅ Mobile view */
 @media (max-width: 768px) {
   .topbar {
     height: 60px;
@@ -153,8 +163,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 10px;
-    border-top: 1px solid #1b263b;
+    padding: 8px 0;
+    border-top: 1px solid #ccc;
+    border-right: none;
     overflow-y: visible;
   }
 
@@ -189,7 +200,7 @@
   }
 }
 
-/* ========== SMALL PHONES ========== */
+/* ✅ Small Phones */
 @media (max-width: 480px) {
   .topbar img {
     height: 30px;
@@ -197,6 +208,7 @@
 
   .sidepanel-menu li a {
     font-size: 0.8rem;
+    padding: 5px;
   }
 
   .account-icon {
