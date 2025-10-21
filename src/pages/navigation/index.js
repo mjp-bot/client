@@ -8,6 +8,7 @@ import "./index.css";
 const Index = () => {
   const role = parseInt(localStorage.getItem("role"), 10);
   const user_name = localStorage.getItem("user_name");
+  const username = localStorage.getItem("username");
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -32,7 +33,7 @@ const Index = () => {
   ];
 
   return (
-    <div>
+    <div className="navigation">
       <div className="topbar">
         <img
           src="../assets/brand/Delsan Logo with ISO.png"
@@ -50,7 +51,8 @@ const Index = () => {
 
           {dropdownOpen && (
             <div className="account-dropdown">
-              <p className="account-username">{user_name}</p>
+              <p className="account-user_name">{user_name}</p>
+              <p className="account-username">{username}</p>
               <button className="logout-btn" onClick={handleLogout}>
                 Logout
               </button>

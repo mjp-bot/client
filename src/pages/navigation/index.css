@@ -1,5 +1,5 @@
 /* ========== TOPBAR ========== */
-.topbar {
+.navigation .topbar {
   width: 100%;
   height: 7vh;
   background-image: linear-gradient(to right, #eeeeee, #185204);
@@ -15,15 +15,15 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.topbar img {
+.navigation .topbar img {
   height: 40px;
   width: auto;
   max-width: 100%;
 }
 
 /* ========== SIDEPANEL ========== */
-.sidepanel {
-  width: 220px;
+.navigation .sidepanel {
+  width: 219px;
   height: calc(100vh - 7vh);
   background-color: #fff;
   position: fixed;
@@ -35,10 +35,9 @@
   justify-content: flex-start;
   transition: all 0.3s ease;
   overflow-y: auto;
-  border-right: 1px solid #e0e0e0;
 }
 
-.sidepanel-title {
+.navigation .sidepanel-title {
   font-size: 1.4rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -46,54 +45,66 @@
   font-weight: 600;
 }
 
-.sidepanel-menu {
+.navigation .sidepanel-menu {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.sidepanel-menu li {
+.navigation .sidepanel-menu li {
   margin-bottom: 1rem;
 }
 
-.sidepanel-menu li a {
+.navigation .sidepanel-menu li a {
   text-decoration: none;
   color: #185204;
   transition: color 0.3s;
-  font-size: 1.05rem;
+  font-size: 20px;
   white-space: nowrap;
   display: block;
   padding: 8px 10px;
-  border-radius: 6px;
+  border-radius: 6px 0 0 6px;
+  font-weight: 500;
 }
 
-.sidepanel-menu li a:hover {
-  color: #00b4d8;
-  background-color: #f2f2f2;
+.navigation .sidepanel-menu li a:hover {
+  color: #fff;
+  background-color: #185204;
 }
 
-.active a {
-  font-weight: bold;
-  color: #00b4d8;
+.navigation .active a {
+  font-weight: 900;
+  background-color: #185204;
+  color: #fff !important;
 }
 
 /* ========== ACCOUNT SECTION ========== */
-.account-section {
+.navigation .account-section {
   position: relative;
 }
 
-.account-icon {
-  font-size: 2rem;
+.navigation .account-icon {
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #185204;
   cursor: pointer;
-  color: white;
-  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none !important;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  outline: none;
 }
 
-.account-icon:hover {
-  color: #00b4d8;
+.navigation .account-icon:active {
+  transform: translateY(3px) scale(0.94);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
-.account-dropdown {
+.navigation .account-dropdown {
   position: absolute;
   top: 50px;
   right: 0;
@@ -103,27 +114,40 @@
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   z-index: 2000;
+  /* background-color: red; */
 }
 
-.account-username {
+.navigation .account-user_name {
   color: #185204;
   font-size: 18px;
   font-weight: 600;
-  margin: 12px 0;
+  /* margin: 12px 0; */
+  margin-top: 10px;
+}
+.navigation .account-username {
+  color: gray;
+  font-size: 12px;
+  font-weight: 500;
+  /* margin: 12px 0; */
+  margin-top: 10px;
 }
 
-.logout-btn {
+.navigation .logout-btn {
   background-color: #fff;
   border-top: 1px solid gray;
-  color: #185204;
+  border-radius: 0px;
+  color: #808080;
   width: 100%;
   text-align: left;
-  padding: 10px 15px;
+  padding: 8px 15px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.logout-btn:hover {
+.navigation .logout-btn:hover {
   background-color: #185204;
   color: #ffffff;
 }
@@ -132,29 +156,29 @@
 
 /* ✅ Tablet view (medium screens) */
 @media (max-width: 1024px) {
-  .topbar {
+  .navigation .topbar {
     padding: 8px 16px;
   }
 
-  .sidepanel {
+  .navigation .sidepanel {
     width: 180px;
     padding: 15px;
   }
 
-  .sidepanel-menu li a {
+  .navigation .sidepanel-menu li a {
     font-size: 1rem;
   }
 }
 
 /* ✅ Mobile view */
 @media (max-width: 768px) {
-  .topbar {
+  .navigation .topbar {
     height: 60px;
     padding: 0 15px;
     justify-content: space-between;
   }
 
-  .sidepanel {
+  .navigation .sidepanel {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -169,11 +193,11 @@
     overflow-y: visible;
   }
 
-  .sidepanel-title {
+  .navigation .sidepanel-title {
     display: none;
   }
 
-  .sidepanel-menu {
+  .navigation .sidepanel-menu {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -181,20 +205,20 @@
     margin: 0;
   }
 
-  .sidepanel-menu li {
+  .navigation .sidepanel-menu li {
     margin: 0;
   }
 
-  .sidepanel-menu li a {
+  .navigation .sidepanel-menu li a {
     font-size: 0.9rem;
     padding: 6px;
   }
 
-  .account-icon {
+  .navigation .account-icon {
     font-size: 1.6rem;
   }
 
-  .account-dropdown {
+  .navigation .account-dropdown {
     top: 45px;
     right: 10px;
   }
@@ -202,16 +226,16 @@
 
 /* ✅ Small Phones */
 @media (max-width: 480px) {
-  .topbar img {
+  .navigation .topbar img {
     height: 30px;
   }
 
-  .sidepanel-menu li a {
+  .navigation .sidepanel-menu li a {
     font-size: 0.8rem;
     padding: 5px;
   }
 
-  .account-icon {
+  .navigation .account-icon {
     font-size: 1.4rem;
   }
 }
