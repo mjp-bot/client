@@ -11,8 +11,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1100; /* stays above sidepanel and main content */
 }
 
 .navigation .topbar img {
@@ -23,18 +23,20 @@
 
 /* ========== SIDEPANEL ========== */
 .navigation .sidepanel {
-  width: 219px;
+  width: 200px;
   height: calc(100vh - 7vh);
   background-color: #fff;
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   transition: all 0.3s ease;
   overflow-y: auto;
+  padding-top: 20px;
+  padding-right: 50px;
+  z-index: 1000; /* below topbar but above content */
 }
 
 .navigation .sidepanel-title {
@@ -50,21 +52,23 @@
   padding: 0;
   margin: 0;
 }
-
 .navigation .sidepanel-menu li {
-  margin-bottom: 1rem;
+  margin-bottom: 3px;
 }
-
 .navigation .sidepanel-menu li a {
   text-decoration: none;
   color: #185204;
   transition: color 0.3s;
-  font-size: 20px;
+  font-size: 18px;
   white-space: nowrap;
   display: block;
-  padding: 8px 10px;
-  border-radius: 6px 0 0 6px;
-  font-weight: 500;
+  padding: 10px 0 10px 30px;
+  padding: none;
+  border-radius: 0 6px 6px 0;
+  font-weight: 600;
+  margin-right: 10px;
+  width: 100%;
+  margin-right: 50px;
 }
 
 .navigation .sidepanel-menu li a:hover {
@@ -76,11 +80,13 @@
   font-weight: 900;
   background-color: #185204;
   color: #fff !important;
+  /* margin-right: 50px; */
 }
 
 /* ========== ACCOUNT SECTION ========== */
 .navigation .account-section {
   position: relative;
+  cursor: pointer;
 }
 
 .navigation .account-icon {
@@ -113,8 +119,10 @@
   min-width: 160px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  z-index: 2000;
-  /* background-color: red; */
+  z-index: 1200; /* above topbar and sidepanel */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .navigation .account-user_name {
@@ -226,7 +234,42 @@
 
 /* ✅ Small Phones */
 @media (max-width: 480px) {
-  .navigation .topbar img {
+  .navigation .topba.add-modal {
+    position: fixed;
+    inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999999;
+    backdrop-filter: blur(3px);
+  }
+
+  .add-modal .modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    width: 600px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.25s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  r img {
     height: 30px;
   }
 

@@ -1,13 +1,450 @@
+/* MAIN CONTAINER */
 .audit {
-  position: fixed; /* Make it stick to a specific position */
-  bottom: 0; /* Attach it to the bottom */
-  left: 200px; /* Align it with your sidebar */
-  right: 0; /* Stretch it across the rest of the screen */
-  background-color: #f2f2f2;
+  position: fixed;
+  bottom: 0;
+  left: 200px; /* Adjust for sidebar */
+  right: 0;
   height: 93vh;
-  padding: 5px;
   display: flex;
   flex-direction: column;
-  font-family: "Poppins", sans-serif;
+  background-color: #f2f2f2;
+  border-left: 1px solid #b7b7b7;
+  font-family: "Alumni Sans", sans-serif;
+  overflow: hidden; /* Prevent unwanted scrollbars */
+}
+
+/* ========== TOP SECTION ========== */
+.top-audit {
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #b7b7b7;
+  background-color: #fff;
+  padding: 0 15px;
+}
+
+.top-left {
+  font-size: 24px;
+  font-weight: 600;
+  color: #808080;
+  display: flex;
+  align-items: center;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* BUTTONS */
+.audit button {
+  padding: 7px 10px;
+  background-color: #fff;
+  border: 1px solid #185204;
+  color: #808080;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease-in;
+  cursor: pointer;
+  margin: 0;
+}
+
+.audit button:hover {
+  background-color: #185204;
+  color: #fff;
+}
+
+/* SEARCH GROUP */
+.top-right input {
+  flex: 1;
+  width: 200px;
+  padding: 7px 10px;
+  border: 1px solid #185204;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  margin: 0;
+}
+
+.top-right input:focus {
+  border: 2px solid #185204;
+}
+
+/* FILTER GROUP */
+.audit .filter {
+  display: flex;
+  gap: 5px;
+}
+
+/* ========== BOTTOM SECTION ========== */
+.bottom-audit {
+  flex: 1; /* fills remaining space dynamically */
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+/* SUB-TOP (inside bottom section) */
+.bottom-top {
+  height: 6vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+/* SUB-TOP TITLE */
+.bottom-top h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #185204;
+  margin: 0;
+}
+
+/* RIGHT SIDE OF SUB-TOP */
+.bot-top-right {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 100%;
+}
+
+.bot-top-right button:hover {
+  background-color: #0f3602;
+}
+
+.bot-top-right .select-options {
+  height: 36px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.bot-top-right select {
+  height: 85%;
+  border: 1px solid #185204;
+  border-radius: 5px;
+  width: 100px;
+  background-color: #fff;
+  color: #185204;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 8px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23185204' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 14px;
+}
+
+.bot-top-right select:hover {
+  border-color: #0f3602;
+}
+
+.bot-top-right select:focus {
+  outline: none;
+}
+
+/* ========== TABLE AREA ========== */
+
+.bottom-table {
+  flex: 1;
+  background-color: white;
+  margin: 0 10px;
+  border-top: 2px solid #b7b7b7;
+  border-left: 2px solid #b7b7b7;
+  border-right: 2px solid #b7b7b7;
+
+  border-radius: 5px 5px 0 0;
+  overflow-y: auto;
   overflow-x: auto;
+  max-height: 80vh;
+}
+
+/* TABLE STYLES */
+.bottom-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px; /* ensures horizontal scroll */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* ✅ Sticky Header with Stable Bottom Border */
+.bottom-table th {
+  background-color: #fff;
+  color: #185204;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: none; /* Remove moving border */
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* ✅ Fixed Bottom Border Under Sticky Header */
+.bottom-table thead::after {
+  content: "";
+  position: sticky;
+  display: block;
+  height: 1px;
+  /* background-color: red; Same as th border color */
+  top: 37px; /* Match header height */
+  z-index: 10;
+}
+
+.bottom-table th {
+  background-color: #fff;
+  color: #185204;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 8px 10px;
+  text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* ✅ Fixed bottom border inside each header cell */
+.bottom-table th::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #b7b7b7; /* same as border color */
+  z-index: 10;
+}
+
+.bottom-table td {
+  background-color: #fff;
+  color: #2d2d2d;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 10px;
+}
+
+.bottom-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Scrollbar styling for WebKit browsers (Chrome, Edge, Safari) */
+.bottom-table::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
+
+.bottom-table::-webkit-scrollbar-track {
+  background: #f2f2f2;
+  border-radius: 5px;
+}
+
+.bottom-table::-webkit-scrollbar-thumb {
+  background-color: #185204;
+  border-radius: 5px;
+  border: 2px solid #f2f2f2;
+}
+
+.bottom-table::-webkit-scrollbar-thumb:hover {
+  background-color: #0f3602;
+}
+
+/* Scrollbar styling for Firefox */
+.bottom-table {
+  scrollbar-width: none;
+  scrollbar-color: #185204 #f2f2f2;
+}
+
+/* BUTTON CONTAINER */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.button-container button {
+  padding: 5px 6px;
+  border: none;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.button-container .edit {
+  background-color: #365987;
+  color: white;
+}
+
+.button-container .delete {
+  background-color: #cf2525;
+  color: white;
+}
+
+.button-container .edit:hover {
+  background-color: #042752;
+  color: white;
+}
+
+.button-container .delete:hover {
+  background-color: #730404;
+  color: white;
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 0;
+  margin-left: 10px;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 5px;
+}
+
+.page-btn,
+.page-number {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-btn:hover:not(:disabled),
+.page-number:hover:not(.active) {
+  background-color: #185204;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-number.active {
+  background-color: #185204;
+  color: #fff;
+  border-color: #185204;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.page-info {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ✅ RESPONSIVE FIXES */
+@media (max-width: 1024px) {
+  .audit {
+    left: 150px;
+  }
+
+  .top-right input {
+    width: 160px;
+  }
+
+  .bot-top-right select {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .audit {
+    left: 0;
+    position: relative;
+    height: auto;
+  }
+
+  .top-audit {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .top-right {
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .top-right input {
+    width: 100%;
+  }
+
+  .bottom-top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .bot-top-right {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .pagination {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .bottom-table {
+    margin: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-left {
+    font-size: 18px;
+  }
+
+  .audit button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .top-right input {
+    font-size: 13px;
+  }
+
+  .bottom-top h1 {
+    font-size: 20px;
+  }
+
+  .bottom-table table {
+    min-width: 600px;
+  }
+
+  .page-btn,
+  .page-number {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
 }

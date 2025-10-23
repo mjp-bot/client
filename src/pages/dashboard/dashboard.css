@@ -1,13 +1,324 @@
 .dashboard {
-  position: fixed;      /* Make it stick to a specific position */
-  bottom: 0;            /* Attach it to the bottom */
-  left: 200px;          /* Align it with your sidebar */
-  right: 0;             /* Stretch it across the rest of the screen */
-  background-color: #f2f2f2;
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  right: 0;
   height: 93vh;
-  padding: 5px;
   display: flex;
   flex-direction: column;
-  font-family: "Poppins", sans-serif;
-  overflow-x: auto;
+  background-color: #f2f2f2;
+  border-left: 1px solid #b7b7b7;
+  font-family: "Alumni Sans", sans-serif;
+  transition: left 0.3s ease;
+}
+
+/* ===== TOP BAR ===== */
+.top-dashboard {
+  flex-shrink: 0;
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* ✅ vertically centers items */
+  border-bottom: 2px solid #b7b7b7;
+  background-color: #fff;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.top-left {
+  font-size: 24px;
+  font-weight: 600;
+  color: #808080;
+}
+
+.top-right {
+  display: flex;
+  align-items: center; /* ✅ ensures button and icons stay aligned */
+  justify-content: center;
+  gap: 5px;
+}
+
+/* ===== BUTTONS ===== */
+.dashboard button {
+  padding: 7px 12px;
+  background-color: #fff;
+  border: 1px solid #185204;
+  color: #808080;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease-in;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* ✅ centers icon + text vertically */
+  justify-content: center;
+  gap: 5px; /* space between icon and text */
+  line-height: 1; /* removes extra height from text */
+  margin: 0;
+}
+
+.dashboard button:hover {
+  background-color: #185204;
+  color: #fff;
+}
+
+/* ===== MAIN CONTENT ===== */
+.bottom-dashboard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* ===== DEPLOYED PRODUCTS ===== */
+.deployed-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+  background-color: #fff;
+  padding: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+}
+
+.deployed-products .index {
+  flex: 1;
+  min-width: 200px;
+  height: 130px;
+  background-color: #e6f4ea;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: #185204;
+  padding: 15px;
+  gap: 15px;
+  transition: all 0.2s ease;
+}
+
+.deployed-products .index:active {
+  transform: translateY(3px) scale(0.94);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Text container */
+.deployed-products .index .text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 15px;
+}
+
+/* Icon styling */
+.deployed-products .index svg {
+  font-size: 24px;
+  color: #185204;
+}
+
+/* Text sizes */
+.deployed-products .index h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.deployed-products .index h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Section colors */
+.deployed-products .first {
+  background-color: #b3e5fc;
+}
+.deployed-products .second {
+  background-color: #c8e6c9;
+}
+.deployed-products .third {
+  background-color: #b2ebf2;
+}
+.deployed-products .fourth {
+  background-color: #fff9c4;
+}
+.deployed-products .fifth {
+  background-color: #ffcdd2;
+}
+
+/* ===== TABLE SECTION ===== */
+.table-products {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+  background-color: #fff;
+  padding: 0 10px 10px 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-wrap: wrap; /* responsive adjustment */
+}
+
+.index {
+  flex: 1;
+  min-width: 280px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+/* Section title */
+.index h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #185204;
+}
+
+/* Scrollable table area */
+.index .table-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 400px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* TABLE */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Alumni Sans", sans-serif;
+}
+
+.product-table th {
+  background-color: #fff;
+  color: #185204;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 8px 10px;
+  text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.product-table td {
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.product-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  .dashboard {
+    left: 150px;
+  }
+
+  .top-left {
+    font-size: 20px;
+  }
+
+  .deployed-products .index h1 {
+    font-size: 28px;
+  }
+
+  .deployed-products .index h2 {
+    font-size: 16px;
+  }
+
+  .product-table th,
+  .product-table td {
+    font-size: 16px;
+  }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  .dashboard {
+    left: 0;
+    height: auto;
+    position: relative;
+  }
+
+  .top-dashboard {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .deployed-products {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .deployed-products .index {
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
+    padding: 10px;
+  }
+
+  .table-products {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .index {
+    width: 100%;
+  }
+
+  .top-left {
+    font-size: 18px;
+  }
+
+  .dashboard button {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
+
+/* Small phones (≤480px) */
+@media (max-width: 480px) {
+  .top-left {
+    font-size: 16px;
+  }
+
+  .deployed-products .index h1 {
+    font-size: 24px;
+  }
+
+  .deployed-products .index h2 {
+    font-size: 14px;
+  }
+
+  .product-table th,
+  .product-table td {
+    font-size: 14px;
+  }
+
+  .deployed-products .index {
+    gap: 10px;
+  }
+
+  .deployed-products .index svg {
+    font-size: 20px;
+  }
 }
