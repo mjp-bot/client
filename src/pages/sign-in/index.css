@@ -22,7 +22,7 @@ body {
 }
 
 /* LEFT SIDE */
-.login-left {
+.login-container .login-left {
   width: 50%;
   background-color: #fff;
   display: flex;
@@ -34,7 +34,7 @@ body {
   height: 100%;
 }
 
-.left-content {
+.login-container .left-content {
   width: 100%;
   max-width: 580px;
   display: flex;
@@ -46,20 +46,20 @@ body {
 }
 
 /* TOP SECTION (Logo) */
-.top {
+.login-container .top {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.top .logo {
+.login-container .top .logo {
   width: 220px;
   height: auto;
 }
 
 /* BOTTOM SECTION */
-.bottom {
+.login-container .bottom {
   width: 100%;
   max-width: 480px;
   margin-left: 0;
@@ -68,19 +68,19 @@ body {
 }
 
 /* TITLE & SUBTITLE */
-.webTitle {
+.login-container .webTitle {
   width: 100%;
   max-width: 480px;
 }
 
-.webTitle h2 {
+.login-container .webTitle h2 {
   color: #185204;
   font-size: 42px;
   font-weight: 600;
   line-height: 1.1;
 }
 
-.webTitle p {
+.login-container .webTitle p {
   color: #3b3b3b;
   font-size: 20px;
   font-weight: 400;
@@ -95,14 +95,14 @@ form {
   flex-direction: column;
 }
 
-label {
+.login-container label {
   color: #3b3b3b;
   margin-bottom: 5px;
   font-size: 18px;
   font-weight: 400;
 }
 
-input {
+.login-container input {
   padding: 10px;
   border: 1px solid #185204;
   border-radius: 3px;
@@ -112,11 +112,11 @@ input {
   font-size: 18px;
 }
 
-input:focus {
+.login-container input:focus {
   border: 2px solid #1f611f;
 }
 
-button {
+.login-container button {
   background-color: #185204;
   color: #fff;
   padding: 10px;
@@ -129,11 +129,11 @@ button {
   transition: background 0.3s ease;
 }
 
-button:hover {
+.login-container button:hover {
   background-color: #1f611f;
 }
 
-.error {
+.login-container .error {
   color: red;
   font-size: 16px;
   margin-top: -8px;
@@ -141,8 +141,7 @@ button:hover {
   font-weight: 500;
 }
 
-/* RIGHT SIDE */
-.login-right {
+.login-container .login-right {
   width: 50%;
   background: #185204;
   display: flex;
@@ -153,7 +152,7 @@ button:hover {
   height: 100%;
 }
 
-.bg-pattern {
+.login-container .bg-pattern {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -172,19 +171,19 @@ button:hover {
     padding: 40px 50px;
   }
 
-  .login-right {
+  .login-container .login-right {
     width: 45%;
   }
 
-  .webTitle h2 {
+  .login-container .webTitle h2 {
     font-size: 38px;
   }
 
-  .webTitle p {
+  .login-container .webTitle p {
     font-size: 18px;
   }
 
-  input,
+  .login-container input,
   button,
   label {
     font-size: 17px;

@@ -234,7 +234,7 @@
 
 /* ✅ Small Phones */
 @media (max-width: 480px) {
-  .navigation .topba.add-modal {
+  .navigation .topbar .add-modal {
     position: fixed;
     inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
     width: 100vw;
@@ -247,7 +247,7 @@
     backdrop-filter: blur(3px);
   }
 
-  .add-modal .modal-content {
+  .navigation .add-modal .modal-content {
     background-color: #fff;
     border-radius: 12px;
     padding: 30px;

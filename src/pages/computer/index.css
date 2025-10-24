@@ -1,37 +1,53 @@
-/* MAIN CONTAINER */
+/* =======================
+   GLOBAL STYLES
+======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Alumni Sans", sans-serif;
+}
+
+/* =======================
+   MAIN CONTAINER
+======================= */
 .computers {
   position: fixed;
   bottom: 0;
-  left: 200px; /* matches sidebar width */
+  left: 200px;
   right: 0;
   height: 93vh;
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
   border-left: 1px solid #b7b7b7;
-  font-family: "Alumni Sans", sans-serif;
   overflow: hidden;
-  z-index: 1; /* below navigation UI */
+  z-index: 1;
 }
 
-/* ========== TOP SECTION ========== */
+/* =======================
+   TOP SECTION
+======================= */
 .top-computers {
   height: 7vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  border-bottom: 2px solid #b7b7b7;
-  background-color: #fff;
   padding: 0 15px;
+  background-color: #fff;
+  border-bottom: 2px solid #b7b7b7;
 }
 
 .top-left {
+  display: flex;
+  align-items: center;
   font-size: 24px;
   font-weight: 600;
   color: #808080;
-  display: flex;
-  align-items: center;
 }
 
 .top-right {
@@ -40,17 +56,17 @@
   gap: 5px;
 }
 
-/* BUTTONS */
+/* Buttons */
 .computers button {
+  margin: 0;
   padding: 7px 10px;
-  background-color: #fff;
-  border: 1px solid #185204;
-  color: #808080;
   font-size: 14px;
   font-weight: 500;
-  transition: background-color 0.3s ease-in;
+  color: #808080;
+  background-color: #fff;
+  border: 1px solid #185204;
   cursor: pointer;
-  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .computers button:hover {
@@ -58,70 +74,69 @@
   color: #fff;
 }
 
-/* SEARCH GROUP */
+/* Search Input */
 .top-right input {
-  flex: 1;
   width: 200px;
   padding: 7px 10px;
+  font-size: 14px;
   border: 1px solid #185204;
   border-radius: 5px;
   outline: none;
-  font-size: 14px;
-  margin: 0;
 }
 
 .top-right input:focus {
   border: 2px solid #185204;
 }
 
-/* FILTER GROUP */
-.computers .filter {
-  display: flex;
-  gap: 5px;
-}
+/*  */
+/* Filter & Add Buttons */
+.computers .filter,
 .computers .addItem {
   display: flex;
   gap: 5px;
+}
+
+.computers .addItem {
   background-color: #185204;
-  color: white;
-  transition: all 0.2s ease;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .computers .addItem:active {
   transform: translateY(3px) scale(0.94);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
-/* ========== BOTTOM SECTION ========== */
+
+/* =======================
+   BOTTOM SECTION
+======================= */
 .bottom-computers {
-  flex: 1; /* fills remaining space dynamically */
+  flex: 1;
   display: flex;
   flex-direction: column;
   background-color: #fff;
 }
 
-/* SUB-TOP (inside bottom section) */
+/* Sub-top header */
 .bottom-top {
   height: 6vh;
-  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
+  background-color: #fff;
 }
 
-/* SUB-TOP TITLE */
 .bottom-top h1 {
   font-size: 24px;
   font-weight: 600;
   color: #185204;
-  margin: 0;
 }
 
-/* RIGHT SIDE OF SUB-TOP */
+/* Sub-top right controls */
 .bot-top-right {
   display: flex;
   align-items: center;
-  gap: 0;
   height: 100%;
 }
 
@@ -130,30 +145,27 @@
 }
 
 .bot-top-right .select-options {
-  height: 36px;
-  margin-left: 5px;
   display: flex;
   align-items: center;
+  height: 36px;
+  margin-left: 5px;
 }
 
 .bot-top-right select {
   height: 85%;
-  border: 1px solid #185204;
-  border-radius: 5px;
-  width: 100px;
-  background-color: #fff;
-  color: #185204;
+  min-width: 90px;
+  padding: 0 8px;
   font-size: 14px;
   font-weight: 600;
-  padding: 0 8px;
-  cursor: pointer;
+  color: #185204;
+  border: 1px solid #185204;
+  border-radius: 5px;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg fill='%23185204' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")
+    no-repeat right 8px center / 14px;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg fill='%23185204' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3 ease;
 }
 
 .bot-top-right select:hover {
@@ -164,97 +176,52 @@
   outline: none;
 }
 
-/* ========== TABLE AREA ========== */
-
+/* =======================
+   TABLE AREA
+======================= */
 .bottom-table {
   flex: 1;
-  background-color: white;
   margin: 0 10px;
-  border-top: 2px solid #b7b7b7;
-  border-left: 2px solid #b7b7b7;
-  border-right: 2px solid #b7b7b7;
-
+  background-color: #fff;
+  border: 2px solid #b7b7b7;
   border-radius: 5px 5px 0 0;
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow: auto;
   max-height: 80vh;
+  scrollbar-width: thin;
+  scrollbar-color: #185204 #f2f2f2;
 }
 
-/* TABLE STYLES */
 .bottom-table table {
   width: 100%;
+  min-width: 700px;
   border-collapse: collapse;
-  min-width: 700px; /* ensures horizontal scroll */
-  overflow-x: auto;
-  overflow-y: auto;
 }
 
-/* ✅ Sticky Header with Stable Bottom Border */
+/* Sticky Header */
 .bottom-table th {
-  background-color: #fff;
-  color: #185204;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 8px 10px;
-  text-align: left;
-  border-bottom: none; /* Remove moving border */
   position: sticky;
   top: 0;
   z-index: 5;
-}
-
-/* ✅ Fixed Bottom Border Under Sticky Header */
-.bottom-table thead::after {
-  content: "";
-  position: sticky;
-  display: block;
-  height: 1px;
-  /* background-color: red; Same as th border color */
-  top: 37px; /* Match header height */
-  z-index: 10;
-}
-
-.bottom-table th {
-  background-color: #fff;
-  color: #185204;
+  padding: 8px 10px;
+  font-size: 16px;
   font-weight: 700;
-  font-size: 16px;
-  padding: 8px 10px;
+  color: #185204;
   text-align: left;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-}
-
-/* ✅ Fixed bottom border inside each header cell */
-.bottom-table th::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: #b7b7b7; /* same as border color */
-  z-index: 10;
+  background-color: #fff;
+  border-bottom: 1px solid #b7b7b7;
 }
 
 .bottom-table td {
-  background-color: #fff;
-  color: #2d2d2d;
-  font-weight: 500;
-  font-size: 15px;
   padding: 8px 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2d2d2d;
 }
 
-.bottom-table tr:last-child td {
-  border-bottom: none;
-}
-
-/* Scrollbar styling for WebKit browsers (Chrome, Edge, Safari) */
+/* Scrollbar (WebKit) */
 .bottom-table::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-  background-color: red;
 }
 
 .bottom-table::-webkit-scrollbar-track {
@@ -272,13 +239,9 @@
   background-color: #0f3602;
 }
 
-/* Scrollbar styling for Firefox */
-.bottom-table {
-  scrollbar-width: none;
-  scrollbar-color: #185204 #f2f2f2;
-}
-
-/* BUTTON CONTAINER */
+/* =======================
+   TABLE BUTTONS
+======================= */
 .button-container {
   display: flex;
   justify-content: center;
@@ -291,37 +254,37 @@
   padding: 5px 6px;
   border: none;
   font-size: 12px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .button-container .edit {
   background-color: #365987;
-  color: white;
-}
-
-.button-container .delete {
-  background-color: #cf2525;
-  color: white;
+  color: #fff;
 }
 
 .button-container .edit:hover {
   background-color: #042752;
-  color: white;
+}
+
+.button-container .delete {
+  background-color: #cf2525;
+  color: #fff;
 }
 
 .button-container .delete:hover {
   background-color: #730404;
-  color: white;
 }
 
-/* PAGINATION */
+/* =======================
+   PAGINATION
+======================= */
 .pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   flex-wrap: wrap;
-  font-family: "Poppins", sans-serif;
+  gap: 8px;
   padding: 10px 0;
   margin-left: 10px;
 }
@@ -333,17 +296,14 @@
 
 .page-btn,
 .page-number {
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  color: #333;
   background-color: #f4f4f4;
   border: 1px solid #ccc;
-  color: #333;
-  padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .page-btn:hover:not(:disabled),
@@ -371,7 +331,9 @@
   color: #555;
 }
 
-/* ✅ RESPONSIVE FIXES */
+/* =======================
+   RESPONSIVE STYLES
+======================= */
 @media (max-width: 1024px) {
   .computers {
     left: 150px;
@@ -380,25 +342,22 @@
   .top-right input {
     width: 160px;
   }
-
-  .bot-top-right select {
-    min-width: 90px;
-  }
 }
 
 @media (max-width: 768px) {
   .computers {
-    left: 0;
     position: relative;
+    left: 0;
     height: auto;
   }
 
-  .top-computers {
+  .top-computers,
+  .bottom-top {
     flex-direction: column;
     align-items: flex-start;
-    height: auto;
     padding: 10px;
     gap: 10px;
+    height: auto;
   }
 
   .top-right {
@@ -411,19 +370,9 @@
     width: 100%;
   }
 
-  .bottom-top {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  .bot-top-right {
-    justify-content: flex-start;
-    width: 100%;
-  }
-
+  .bot-top-right,
   .pagination {
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
   }
 
@@ -461,27 +410,26 @@
   }
 }
 
-/* MODALS */
-
-/* ✅ ADD MODAL */
-
+/* =======================
+   ADD MODAL STYLES
+======================= */
 .add-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  background-color: rgba(0, 0, 0, 0.45); /* Semi-transparent overlay */
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99999999; /* On top of everything */
+  background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(3px);
-  overflow: hidden; /* Prevent background scroll */
+  z-index: 99999999;
   animation: fadeIn 0.25s ease;
 }
 
-/* Optional smooth overlay animation */
+/* =======================
+   ANIMATIONS
+======================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -491,42 +439,123 @@
   }
 }
 
-/* ✅ MODAL HEADER */
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =======================
+   MODAL CONTENT
+======================= */
+.add-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 60vw;
+  max-width: 1200px;
+  height: 95vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+/* =======================
+   HEADER
+======================= */
 .add-modal .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #185204;
+  color: #fff;
+  padding: 10px 20px;
 }
 
 .add-modal .modal-header h2 {
-  color: #185204;
-  font-size: 22px;
-  margin: 0;
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .add-modal .close-btn {
-  background: transparent;
+  background: none;
   border: none;
   font-size: 22px;
-  color: #555;
+  color: #fff;
   cursor: pointer;
-  transition: color 0.2s ease;
+  padding: 5px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .add-modal .close-btn:hover {
-  color: #185204;
+  transform: scale(1.1);
+  color: #c8e6c9;
 }
 
-/* ✅ MODAL BODY */
+/* =======================
+   BODY
+======================= */
 .add-modal .modal-body {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  padding: 10px 24px;
+  background: #fff;
+  align-items: stretch;
+  overflow-y: auto;
+  scrollbar-width: none;
+  margin-bottom: 10px;
+}
+
+.add-modal .modal-left,
+.add-modal .modal-right {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
+.add-modal .modal-left {
+  padding-right: 10px;
+}
+
+.add-modal .modal-right {
+  padding-left: 10px;
+}
+
+/* =======================
+   SECTIONS
+======================= */
+.add-modal .modal-body h2 {
+  color: #185204;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 2px solid #185204;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+
+.add-modal .section {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 10px 0;
+}
+
+/* =======================
+   FORM FIELDS
+======================= */
 .add-modal label {
   font-weight: 600;
   color: #333;
+  font-size: 14px;
 }
 
 .add-modal input,
@@ -534,23 +563,163 @@
 .add-modal textarea {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #185204;
+  border: 1px solid #b7b7b7;
   border-radius: 6px;
-  outline: none;
   font-size: 14px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .add-modal input:focus,
 .add-modal select:focus,
 .add-modal textarea:focus {
+  border-color: #185204;
+  box-shadow: 0 0 4px rgba(24, 82, 4, 0.3);
+}
+
+.add-modal textarea {
+  height: 100px;
+  resize: none;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+/* =======================
+   SELECT FIELD
+======================= */
+.add-modal .select-options {
+  display: flex;
+  align-items: center;
+}
+
+.add-modal select {
+  appearance: none;
+  padding: 8px 34px 8px 10px;
+  /* border: 1px solid #185204; */
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg fill='%23185204' height='14' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9l5 5 5-5z'/%3E%3C/svg%3E")
+    no-repeat right 10px center / 14px;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.add-modal select:hover,
+.add-modal select:focus {
   border-color: #0f3602;
   box-shadow: 0 0 4px rgba(24, 82, 4, 0.3);
 }
 
-/* ✅ MODAL FOOTER BUTTONS */
+/* =======================
+   FOOTER
+======================= */
 .add-modal .modal-footer {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 10px;
+  padding: 12px 24px;
+  background: #fff;
+  border-top: 1px solid #dcdcdc;
+}
+
+.add-modal .modal-footer button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Footer Buttons */
+.save-btn {
+  background-color: #185204;
+  color: #fff;
+}
+
+.save-btn:hover {
+  background-color: #0f3602;
+}
+
+.cancel-btn {
+  background-color: #e53935;
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* =======================
+   INLINE BUTTONS
+======================= */
+.input-with-btn {
+  /* display: flex; */
+  align-items: center;
+  gap: 8px;
+}
+
+.input-with-btn input {
+  flex: 1;
+}
+
+/* =======================
+   VIEW BUTTONS
+======================= */
+.btn-supports,
+.btn-pms,
+.btn-remarks {
+  width: 90%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #333;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-supports:active,
+.btn-pms:active,
+.btn-remarks:active {
+  transform: translateY(3px) scale(0.94);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 900px) {
+  .add-modal .modal-body {
+    flex-direction: column;
+  }
+
+  .add-modal .modal-left {
+    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 20px;
+  }
+
+  .add-modal .modal-right {
+    padding-left: 0;
+  }
+
+  .add-modal .section {
+    grid-template-columns: 1fr;
+  }
+
+  .add-modal .modal-content {
+    width: 95vw;
+    height: 90vh;
+  }
+
+  .add-modal .modal-header h2 {
+    font-size: 18px;
+  }
 }

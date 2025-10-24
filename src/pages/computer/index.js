@@ -8,6 +8,7 @@ import {
   faUserPen,
   faTrash,
   faPlus,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Index() {
@@ -19,6 +20,12 @@ function Index() {
 
   const openAddModal = () => setAddModalOpen(true);
   const closeAddModal = () => setAddModalOpen(false);
+
+  const openUpdateModal = () => setUpdateModalOpen(true);
+  const closeUpdateModal = () => setUpdateModalOpen(false);
+
+  // DROPDOWN SELECTION
+  const [selected, setSelected] = useState("");
 
   return (
     <>
@@ -120,7 +127,7 @@ function Index() {
                   <td>Last Support Date</td>
                   <td>
                     <div className="button-container">
-                      <button className="edit">
+                      <button className="edit" onClick={openUpdateModal}>
                         <FontAwesomeIcon
                           icon={faUserPen}
                           className="edit-icon"
@@ -143,17 +150,286 @@ function Index() {
 
       {/* ✅ Modal moved OUTSIDE the .computers div */}
       {addModalOpen && (
-        <div className="add-modal" onClick={closeAddModal}>
+        <div className="add-modal">
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>Add New Product</h2>
-              <button className="close-btn" onClick={closeAddModal}>
-                ×
-              </button>
+              <h2>Add New Item</h2>
             </div>
+
             <div className="modal-body">
-              {/* Add form fields here */}
-              <p>Modal content goes here...</p>
+              <div className="modal-left">
+                <h2>Deployment Details</h2>
+                <div className="section">
+                  <label>Client Name</label>
+                  <input type="text" />
+                  <label>Address</label>
+                  <input type="text" />
+                  <label>Date Deployed</label>
+                  <input type="date" />
+                </div>
+
+                <h2>Device Details</h2>
+                <div className="section">
+                  <label>Type</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Model</label>
+                  <input type="text" />
+                  <label>Serial Number</label>
+                  <input type="text" />
+                  <label>SKU</label>
+                  <input type="text" />
+                  <label>Specification</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Status</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                </div>
+
+                <h2>Administrative Details</h2>
+                <div className="section">
+                  <label>Delsan PO#</label>
+                  <input type="text" />
+                  <label>Delsan DR#</label>
+                  <input type="text" />
+                  <label>Client PO#</label>
+                  <input type="text" />
+                  <label>Client DR#</label>
+                  <input type="text" />
+                  <label>Product Manager</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Account Manager</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="modal-right">
+                <h2>Warranty Information</h2>
+                <div className="section">
+                  <label>Date Purchased</label>
+                  <input type="date" />
+                  <label>Warranty</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Warranty Expiration Date</label>
+                  <input type="date" />
+                </div>
+
+                <h2>Support Management</h2>
+                <div className="section support-section">
+                  <label>Last Support Date</label>
+                  <input type="date" />
+
+                  <label>Last Support Remarks</label>
+
+                  <textarea type="text" />
+
+                  <label>Last PMS Date</label>
+                  <input type="date" />
+
+                  <label>Last PMS Remarks</label>
+                  <textarea type="text" />
+                </div>
+
+                <h2>General Information</h2>
+                <div className="section">
+                  <label>Remarks</label>
+
+                  <textarea type="text" />
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="cancel-btn" onClick={closeAddModal}>
+                Cancel
+              </button>
+              <button className="save-btn">Save</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {updateModalOpen && (
+        <div className="add-modal">
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Update Item</h2>
+            </div>
+
+            <div className="modal-body">
+              <div className="modal-left">
+                <h2>Deployment Details</h2>
+                <div className="section">
+                  <label>Client Name</label>
+                  <input type="text" />
+                  <label>Address</label>
+                  <input type="text" />
+                  <label>Date Deployed</label>
+                  <input type="date" />
+                </div>
+
+                <h2>Device Details</h2>
+                <div className="section">
+                  <label>Type</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Model</label>
+                  <input type="text" />
+                  <label>Serial Number</label>
+                  <input type="text" />
+                  <label>SKU</label>
+                  <input type="text" />
+                  <label>Specification</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Status</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                </div>
+
+                <h2>Administrative Details</h2>
+                <div className="section">
+                  <label>Delsan PO#</label>
+                  <input type="text" />
+                  <label>Delsan DR#</label>
+                  <input type="text" />
+                  <label>Client PO#</label>
+                  <input type="text" />
+                  <label>Client DR#</label>
+                  <input type="text" />
+                  <label>Product Manager</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Account Manager</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="modal-right">
+                <h2>Warranty Information</h2>
+                <div className="section">
+                  <label>Date Purchased</label>
+                  <input type="date" />
+                  <label>Warranty</label>
+                  <div className="select-options">
+                    <select>
+                      <option>None</option>
+
+                      <option>3.3.3</option>
+                      <option>3.3.3</option>
+                    </select>
+                  </div>
+                  <label>Warranty Expiration Date</label>
+                  <input type="date" />
+                </div>
+
+                <h2>Support Management</h2>
+                <div className="section support-section">
+                  <label>Last Support Date</label>
+                  <input type="date" />
+
+                  <div className="input-with-btn">
+                    <label>Last Support Remarks</label>
+
+                    <button className="btn-supports">View</button>
+                  </div>
+                  <textarea type="text" />
+
+                  <label>Last PMS Date</label>
+                  <input type="date" />
+
+                  <div className="input-with-btn">
+                    <label>Last PMS Remarks</label>
+                    <button className="btn-pms">View</button>
+                  </div>
+                  <textarea type="text" />
+                </div>
+
+                <h2>General Information</h2>
+                <div className="section">
+                  <div className="input-with-btn">
+                    <label>Remarks</label>
+
+                    <button className="btn-remarks">View</button>
+                  </div>
+                  <textarea type="text" />
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="cancel-btn" onClick={closeUpdateModal}>
+                Cancel
+              </button>
+              <button className="save-btn">Save</button>
             </div>
           </div>
         </div>
